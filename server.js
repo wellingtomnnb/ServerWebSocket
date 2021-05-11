@@ -10,7 +10,12 @@ wss.on('connection', function connection(client) {
 
     registerClient(client)
 
+    
     client.on('message', function incoming(message) {
+
+        console.log(message)
+
+        
 
         const str = message.toString()
     
@@ -21,11 +26,16 @@ wss.on('connection', function connection(client) {
             saveData(str)
 
             //Quando receber uma mensagem com todos os parametros, enviamos ela para todos os clients conectados
-            clients.forEach(s => s.send(client.clientName + ': ' + str))            
+            //clients.forEach(s => s.send(client.clientName + ': ' + str))  
+            clients.forEach(s => s.send(str))           
         }
+
+        
 
 
     });
+
+    
 
     //CLOSE THE CONNECTION
     client.on('close', ()=>{
@@ -38,7 +48,7 @@ wss.on('connection', function connection(client) {
         clients.splice(client.index,1)
     });
 
-    client.send('something');
+    //client.send('something');
 });
 
 //AUXILIARY FUNCTIONS
@@ -117,7 +127,7 @@ function saveData(message){
     });
 
     /*
-    // Transforma STRING em JSON
+    //Transforma STRING em JSON
     //var event = JSON.parse(data)
 
     //Transforma OBJETO em STRING
