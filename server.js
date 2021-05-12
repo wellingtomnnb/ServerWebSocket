@@ -62,17 +62,14 @@ function registerClient(client){
 }
 
 function validData(client, message){
-    str = message.toString()
-        
-    //
-    if(str === 'end'){
+    if(message === 'end'){
         client.close()
     }
     else{
         
         //Tentativa de converter os dados recebidos p/JSON
         try{
-            var obj = JSON.parse(str)
+            var obj = JSON.parse(message)
 
             if(typeof obj == "object"){
 
