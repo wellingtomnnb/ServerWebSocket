@@ -13,10 +13,6 @@ wss.on('connection', function connection(client) {
     
     client.on('message', function incoming(message) {
 
-        console.log(message)
-
-        
-
         const str = message.toString()
     
         if(validData(client, message)){
@@ -26,12 +22,8 @@ wss.on('connection', function connection(client) {
             saveData(str)
 
             //Quando receber uma mensagem com todos os parametros, enviamos ela para todos os clients conectados
-            //clients.forEach(s => s.send(client.clientName + ': ' + str))  
             clients.forEach(s => s.send(str))           
         }
-
-        
-
 
     });
 
@@ -48,7 +40,6 @@ wss.on('connection', function connection(client) {
         clients.splice(client.index,1)
     });
 
-    //client.send('something');
 });
 
 //AUXILIARY FUNCTIONS

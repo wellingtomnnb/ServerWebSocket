@@ -1,7 +1,10 @@
-{"ev": "notification",
+{
+	"ev": "notification",
 	"data": {
 		"hash_id": "c63ae9f4-aec2-4b82-9c76-f6da2bb8b088",
 		"channel": "554733778031",
-		"type": "disabhmgnvbnnled"
+		"title": "Falha ao Enviar",
+		"type": "message",
+		"message": "O canal +554733778031 está apresentando falhas de envio"
 	}
 }
